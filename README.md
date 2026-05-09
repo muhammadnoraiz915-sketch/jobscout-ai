@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🤖 JobScout AI — Autonomous Job Hunting Agent
 
-## Getting Started
+> Built for SMIT Agentic AI Hackathon | Muhammad Noraiz
 
-First, run the development server:
+## 🚀 Live Demo
+- Frontend: (Vercel link — baad mein add karein)
+- Backend: (Hugging Face link — baad mein add karein)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 📌 What is JobScout AI?
+JobScout AI is a fully autonomous career agent that:
+1. Accepts your CV (PDF or Word)
+2. Extracts your skills, experience, and education using AI
+3. Autonomously searches real-time job listings
+4. Scores each job against your profile (0-100%)
+5. Explains WHY each job is a strong or weak match
+6. Lets you chat with an AI Career Advisor about your CV
+
+## 🧠 Agentic Workflow
+CV Upload → Parse & Extract → Generate Queries → Search Jobs → Score & Rank → Display Results → Chat
+
+## ⚙️ Tech Stack
+| Layer | Technology |
+|---|---|
+| LLM | Groq (Llama 3.3 70B) |
+| Agent | LangChain + LangGraph |
+| Backend | FastAPI (Python) |
+| Database | MongoDB Atlas |
+| Job Search | Tavily API |
+| Frontend | Next.js + Tailwind CSS |
+| Backend Deploy | Hugging Face Spaces |
+| Frontend Deploy | Vercel |
+
+## 📁 Project Structure
+```
+jobscout-ai/
+├── backend/
+│   ├── main.py
+│   ├── agents/
+│   │   ├── job_scout_agent.py
+│   │   └── tools.py
+│   ├── rag/
+│   │   ├── cv_parser.py
+│   │   └── embeddings.py
+│   ├── api/
+│   │   └── routes.py
+│   └── database/
+│       └── mongo.py
+└── frontend/
+    └── app/
+        └── page.tsx
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Setup Instructions
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Backend
+```bash
+cd backend
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create `.env` file:
+```
+GROQ_API_KEY=your_key
+TAVILY_API_KEY=your_key
+MONGODB_URL=your_mongodb_url
+```
 
-## Learn More
+Run:
+```bash
+python -m uvicorn main:app --reload
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✨ Features
+- ✅ CV Upload (PDF + Word)
+- ✅ AI-powered skill extraction
+- ✅ Real-time job search (LinkedIn, Indeed, Rozee.pk)
+- ✅ Smart job scoring (0-100%)
+- ✅ AI reasoning per job
+- ✅ Filter by match strength
+- ✅ Career Advisor Chat
+- ✅ MongoDB session storage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔑 Environment Variables
+| Variable | Description |
+|---|---|
+| GROQ_API_KEY | Groq LLM API key |
+| TAVILY_API_KEY | Tavily search API key |
+| MONGODB_URL | MongoDB Atlas connection string |
